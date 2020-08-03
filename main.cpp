@@ -36,12 +36,18 @@ int main() {
     numbers->printMatrix();
     numbers->resize(2, 2);
     numbers->printMatrix();
-    numbers->resize(10, 10);
+    numbers->resize(5, 10);
     numbers->printMatrix();
     for (int i = 0; i < numbers->getRows(); i++) {
         for (int j = 0; j < numbers->getCols(); ++j) {
             numbers->insert(1, i, j);
-            numbers->insert(0, j, i);
+        }
+    }
+    numbers->printMatrix();
+    numbers->resize(6, 2);
+    for (int i = 0; i < numbers->getRows(); i++) {
+        for (int j = 0; j < numbers->getCols(); ++j) {
+            numbers->insert(5, i, j);
         }
     }
     numbers->printMatrix();
