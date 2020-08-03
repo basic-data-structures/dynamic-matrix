@@ -192,14 +192,16 @@ void Matrix<Type>:: copyData(Type** matrix, unsigned int beginRow, unsigned int 
 
 template <typename Type>
 void Matrix<Type>:: printMatrix() {
-    for (int i = 0; i < rows; ++i) {
-        cout << "\t\t";
-        for (int j = 0; j < cols; ++j) {
-            cout << matrix[i][j] << "\t";
+    if (rows > 0 && cols > 0) {
+        for (int i = 0; i < rows; ++i) {
+            cout << "\t\t";
+            for (int j = 0; j < cols; ++j) {
+                cout << matrix[i][j] << "\t";
+            }
+            cout << "\n";
         }
         cout << "\n";
     }
-    cout << "\n";
 }
 
 #endif //GRAPHTEMPLATES_MATRIX_H
