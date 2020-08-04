@@ -30,27 +30,37 @@ public:
     void assignNull(unsigned int beginRow, unsigned int endRow, unsigned int beginCol, unsigned int endCol);
     void copyData(Type** matrix, unsigned int beginRow, unsigned int endRow, unsigned int beginCol, unsigned int endCol);
     void printMatrix();
-    Type operator()(unsigned int row, unsigned int col);
-    friend ostream& operator << (ostream& o, const Matrix<Type> &m);
+    Type& operator()(unsigned int row, unsigned int col); // To do matrix(i,j) = n
+    Type operator()(unsigned int row, unsigned int col) const; // To do n = matrix(i,j)
+
+    friend ostream& operator << (ostream& out, const Matrix<Type> &m) {
+        for (int i = 0; i < m.rows; ++i) {
+            out << "\t\t";
+            for (int j = 0; j < m.cols; ++j) {
+                out << m(i, j) << "\t";
+            }
+            out << "\n";
+        }
+        out << "\n";
+        return out;
+    }
 };
 
 ///////////////////////////////////////////// IMPLEMENTATION /////////////////////////////////////////////
 template <typename Type>
-ostream& operator << (ostream& out, const Matrix<Type> &m) {
-    for (int i = 0; i < m.size; ++i) {
-        out << "\t\t";
-        for (int j = 0; j < m.size; ++j) {
-            out << m.getData(i, j) << "\t";
-        }
-        out << "\n";
-    }
-    out << "\n";
-    return out;
+Type& Matrix<Type>:: operator()(unsigned int row, unsigned int col) {
+    if(row < rows && col < cols)
+        return matrix[row][col];
+    else
+        return null;
 }
 
 template <typename Type>
-Type Matrix<Type>:: operator()(unsigned int row, unsigned int col) {
-    return matrix[row][col];
+Type Matrix<Type>:: operator()(unsigned int row, unsigned int col) const {
+    if(row < rows && col < cols)
+        return matrix[row][col];
+    else
+        return null;
 }
 
 template <typename Type>

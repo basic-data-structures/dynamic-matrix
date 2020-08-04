@@ -8,49 +8,49 @@ int main() {
                        'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
     for (int i = 0; i < letters->getRows(); i++) {
         for (int j = 0; j < letters->getCols(); ++j) {
-            letters->insert(alphabet[i], i, j);
+            (*letters)(i, j) = alphabet[i];
         }
     }
-    letters->printMatrix();
+    cout << *letters;
     letters->resize(5,5);
-    letters->printMatrix();
+    cout << *letters;
     letters->resize(15,15);
-    letters->printMatrix();
+    cout << *letters;
     for (int i = 0; i < letters->getRows(); i++) {
         for (int j = 0; j < letters->getCols(); j++) {
-            letters->insert(alphabet[i], i, j);
+            (*letters)(i, j) = alphabet[i];
         }
     }
-    letters->printMatrix();
+    cout << *letters;
     letters->resize(25, 25);
-    letters->printMatrix();
+    cout << *letters;
 
 
     cout << "\n\t\t---------------------------- NUMBERS -----------------------------\n";
     Matrix<int>* numbers = new Matrix<int>(15, 0);
     for (int i = 0; i < numbers->getRows(); i++) {
         for (int j = 0; j < numbers->getCols(); j++) {
-            numbers->insert(i, j, i);
+            (*numbers)(i, j) = i;
         }
     }
-    numbers->printMatrix();
+    cout << *numbers;
     numbers->resize(2, 2);
-    numbers->printMatrix();
+    cout << *numbers;
     numbers->resize(5, 10);
-    numbers->printMatrix();
+    cout << *numbers;
     for (int i = 0; i < numbers->getRows(); i++) {
         for (int j = 0; j < numbers->getCols(); ++j) {
-            numbers->insert(1, i, j);
+            (*numbers)(i, j) = 1;
         }
     }
     numbers->printMatrix();
     numbers->resize(6, 2);
     for (int i = 0; i < numbers->getRows(); i++) {
         for (int j = 0; j < numbers->getCols(); ++j) {
-            numbers->insert(5, i, j);
+            (*numbers)(i, j) = 5;
         }
     }
-    numbers->printMatrix();
+    cout << *numbers;
 
     delete letters;
     delete numbers;
