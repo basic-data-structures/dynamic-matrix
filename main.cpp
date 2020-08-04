@@ -3,9 +3,10 @@
 int main() {
 
     cout << "\n\t\t---------------------------- LETTERS -----------------------------\n";
-    Matrix<char>* letters = new Matrix<char>(10, '-');
+    Matrix<char>* letters = new Matrix<char>(0, '-');
     char alphabet[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
                        'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+    letters->resize(10, 10);
     for (int i = 0; i < letters->getRows(); i++) {
         for (int j = 0; j < letters->getCols(); ++j) {
             (*letters)(i, j) = alphabet[i];
